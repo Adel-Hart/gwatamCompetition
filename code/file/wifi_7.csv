@@ -1,0 +1,9 @@
+﻿channel_1,wifi_name_1,speed_1,channel_2,wifi_name_2,speed_2,channel_3,wifi_name_3,speed_3,channel_4,wifi_name_4,speed_4
+1~3,L_Technology_3640(~0m) L_Technology_33C0(~6m) L_Technology_B3E0(~11m) L_Technology_3160(~22m) wi_gen(~279m),66 45 39 33 11,1~3,L_Technology_3640(~1m) L_Technology_B3E0(~10m) L_Technology_33C0(~9m) L_Technology_3160(~20m),65 40 41 34,1~3,L_Technology_3640(~0m) L_Technology_3160(~8m) L_Technology_B3E0(~9m) L_Technology_F900(~11m) L_Technology_33C0(~12m) L_Technology_F8E0(~31m),72 42 41 39 38 30,1~3,L_Technology_3640(~2m) L_Technology_F900(~4m) L_Technology_33C0(~4m) L_Technology_B3E0(~11m) L_Technology_F8E0(~16m) L_Technology_3160(~35m),56 49 48 39 36 29
+4~7,L_Technology_6EA0(~6m) L_Technology_6EC0(~17m),44 35,4~7,L_Technology_6EA0(~16m) L_Technology_6EC0(~35m),36 29,4~7,L_Technology_6EA0(~8m),42,4~7,L_Technology_6EA0(~17m) L_Technology_B3C0(~49m),35 26
+8~10,L_Technology_3600(~55m),25,8~10,Null,Null,8~10,Null,Null,8~10,Null,Null
+11~14,L_Technology_F660(~121m),18,11~14,Null,Null,11~14,Null,Null,11~14,L_Technology_6F80(~54m) L_Technology_FBA0(~193m),25 14
+36~50,Null,Null,36~50,Null,Null,36~50,Null,Null,36~50,Null,Null
+50~64,L_Technology_3650(~1m),56,50~64,L_Technology_3650(~1m),56,50~64,L_Technology_3650(~1m),54,50~64,L_Technology_3650(~1m),57
+100~115,L_Technology_33C0(~19m) L_Technology_B3F0(~77m),27 15,100~115,L_Technology_33D0(~19m) L_Technology_B3F0(~77m),27 15,100~115,L_Technology_B3F0(~49m) L_Technology_33D0(~55m),19 18,100~115,L_Technology_33D0(~24m) L_Technology_B3F0(~49m),25 19
+116~148,L_Technology_6EB0(~7m) L_Technology_F910(~29m) L_Technology_3170(~74m),35 23 15,116~148,L_Technology_6EB0(~13m) L_Technology_F910(~13m) L_Technology_3170(~83m),30 30 14,116~148,L_Technology_F910(~12m) L_Technology_6EB0(~19m),31 27,116~148,L_Technology_F910(~7m) L_Technology_6EB0(~33m) L_Technology_3170(~74m),35 22 15
