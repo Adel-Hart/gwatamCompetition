@@ -1,8 +1,4 @@
-from asyncio.windows_events import NULL
-import imp
-from inspect import _void
 from itertools import count
-from re import X
 import string
 from time import sleep
 import pandas as pd
@@ -10,6 +6,7 @@ import matplotlib
 import numpy as np
 import os
 from collections import Counter
+import platform
 
 '''
 
@@ -29,7 +26,10 @@ made from 2022-08-03
 '''
 ###########################전역 함수 part#############################
 global dir #dir 전역 함수
-dir = os.getcwd().replace("/", "\\") #dir은 절대경로 대용으로 쓰임
+if platform.system() =='Windows': #윈도우 환경이
+    dir = os.getcwd().replace("/", "\\") #dir은 절대경로 대용으로 쓰임
+else:
+    pass
 # print(os.getcwd()+"\a") #디버깅
 # print(dir) #디버깅
 global dat #와이파이 데이터를 오버 라이딩 해야 해서 전역 변수로 만듬
@@ -46,7 +46,10 @@ test = {
 
 
 def read_data(clas):
-    final_dir = "{0}\\file\\wifi_{1}.csv".format(dir, clas)
+    if platform.system() == 'Windows':
+        final_dir = "{0}\\file\\wifi_{1}.csv".format(dir, clas)
+    else:
+        final_dir - "{0}/file/wifi_{1}.csv".format(dir, clas)
     dat = pd.read_csv(final_dir, sep = ",", dtype='unicode') #전체 데이터 불러오기
     dat = dat.dropna() #공백 제거 c.f) 이놈 때문에 아래 정렬에서 애를 먹었다, 결측치(NaN)이 형식이 float이라 .join이 안되 문법 오류를 일으키는데 3일 만에 찾았다 ...
     classify(dat) #정렬 함수 요청
