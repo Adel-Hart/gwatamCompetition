@@ -176,9 +176,9 @@ def Most2(obj): #입력은 딕셔너리로 받음, 2번째로 큰 값 구하는 
                 for j in range(len(temp)):
                     final += 'SEC_NAME : ' + temp[j] + '    SEC_SPEED : ' + obj[temp[j]] + '\n'
                 return final
-        return NULL
+        return
     else:
-        return NULL
+        return
 
 def name(target): #와이파이의 최선 값 도출 함수  
     global df1_top
