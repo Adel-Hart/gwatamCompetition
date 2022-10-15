@@ -1,5 +1,6 @@
 from ast import Num
 from itertools import count
+from re import X
 import string
 from time import sleep
 import pandas as pd
@@ -29,6 +30,8 @@ made from 2022-08-03
 global channel_
 channel_ = [] #모든반의 상위 채널
 
+global wifi_
+wifi_ = {} #모든 반의 상위 와이파이 이름
 
 
 
@@ -365,7 +368,9 @@ def Analyze(clas):
             else:
                 DEUS[max(wifi_k, key=wifi_k.get)] = wifi_k[max(wifi_k, key=wifi_k.get)]
 
-    def channel(target): #최적한 채널 도출 함수
+    def channel(target): 
+        
+        #최적한 채널 도출 함수
         ######가장 최적한 채널을 계산########
         # print(target)
 
@@ -403,41 +408,76 @@ def Analyze(clas):
             else:
                 LUX.append(i)
 
-        # print('this is ', channel_k)
-        ###############
-        ##빠른 와이파이의 채널 값 도출##
-
-
-
     #메뉴 등 실행 코드
 
     read_data(clas)
-    print("""
-    ======{clas}반의 결과======
-    앞문 > 최고 - {df1}
-        > 차선책 - {df1_2}
-    티비 앞 > 최고 - {df2}
-            > 차선책 - {df2_2}
-    사물함 앞 > 최고 - {df3}
-            > 차선책 - {df3_2}
-    뒷문 > 최고 - {df4}
-        > 차선책 - {df4_2}
-    ===========================
-    """.format(clas = clas, df1 = df1_top, df1_2 = df1_2top, df2 = df2_top, df2_2 = df2_2top, df3 = df3_top, df3_2 = df3_2top, df4 = df4_top, df4_2 = df4_2top)) #결과 출력
+    # print("""
+    # ======{clas}반의 결과======
+    # 앞문 > 최고 - {df1}
+    #     > 차선책 - {df1_2}
+    # 티비 앞 > 최고 - {df2}
+    #         > 차선책 - {df2_2}
+    # 사물함 앞 > 최고 - {df3}
+    #         > 차선책 - {df3_2}
+    # 뒷문 > 최고 - {df4}
+    #     > 차선책 - {df4_2}
+    # ===========================
+    # """.format(clas = clas, df1 = df1_top, df1_2 = df1_2top, df2 = df2_top, df2_2 = df2_2top, df3 = df3_top, df3_2 = df3_2top, df4 = df4_top, df4_2 = df4_2top)) #결과 출력
 
-    print(ANGEL)
-    print(DEUS)
-    print(LUX)
+    temp = [k for k, v in DEUS.items() if v == max(DEUS.values())]
+    if len(wifi_) != 0:
+        if temp[0].split('(')[0] in [j.split('(')[0] for j in wifi_]:
+            if DEUS[temp[0]] > [v for k, v in wifi_.items()   if temp[0].split('(')[0] in k][0]:
+                wifi_[temp[0]] = DEUS[temp[0]]
+                return temp[0], '를', LUX[0], '로'
+            elif DEUS[temp[0]] == [v for k, v in wifi_.items()   if temp[0].split('(')[0] in k][0]:
+                ko = [k for k, v in ANGEL.items()  if v == max(ANGEL.values())]
+                # print(ko)
+                wifi_[ko[0]] = ANGEL[ko[0]]
+                return temp[0], '를', LUX[0], '로'
+        else:
+            wifi_[temp[0]] = DEUS[temp[0]]
+        # print(temp)
+        return temp[0], '를', LUX[0], '로'
+    else:
+        wifi_[temp[0]] = DEUS[temp[0]]
+        return temp[0], '를', LUX[0], '로'
 
-    return LUX
 
-Analyze(1)
-Analyze(2)
-Analyze(3)
-Analyze(4)
-Analyze(5)
-Analyze(6)
-Analyze(7)
-Analyze(8)
+    # if len(wifi_) != 0:
+    #     for k in DEUS.keys():
+    #         if not k.split('(')[0] in [j.split('(')[0] for j in wifi_.keys()] and not ANGEL[0].split('(')[0] in [j.split('(')[0] for j in wifi_.keys()]:
+    #             res_wifi = [x for x, v in DEUS.items() if v == max(DEUS.values())][0]
+    #             wifi_[res_wifi] = DEUS[res_wifi]
+    #             return res_wifi, '를 ', LUX[0] + '로'
+    #         elif not k.split('(')[0] in [j.split('(')[0] for j in wifi_.keys()] and ANGEL[0].split('(')[0] in [j.split('(')[0] for j in wifi_.keys()]:
+    #             res_wifi = [x for x, v in DEUS.items() if v == max(DEUS.values())][0]
+    #             wifi_[res_wifi] = DEUS[res_wifi]
+    #             return res_wifi, '를 ', LUX[0] + '로'
+
+    #         elif k.split('(')[0] in [j.split('(')[0] for j in wifi_.keys()] and not ANGEL[0].split('(')[0] in [j.split('(')[0] for j in wifi_.keys()]:
+    #             res_wifi = ANGEL[0]
+    #             wifi_[res_wifi] = ANGEL[0]
+    #             return res_wifi, '를 ', LUX[0] + '로'
+    #         else:
+    #             res_wifi = [x for x, v in DEUS.items() if v == max(DEUS.values())][0]
+    #             wifi_[res_wifi] = DEUS[res_wifi]
+    #             return res_wifi, '를 ', LUX[0] + '로'
+    # else:
+    #     res_wifi = [x for x, v in DEUS.items() if v == max(DEUS.values())][0]
+    #     wifi_[res_wifi] = DEUS[res_wifi]
+    #     return res_wifi, '를 ', LUX[0] + '로'
+
+
+
+
+print(Analyze(1))
+print(Analyze(2))
+print(Analyze(3))
+print(Analyze(4))
+print(Analyze(5))
+print(Analyze(6))
+print(Analyze(7))
+print(Analyze(8))
 
 
