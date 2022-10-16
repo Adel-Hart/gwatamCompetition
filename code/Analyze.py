@@ -187,6 +187,7 @@ def Analyze(clas):
                 str(temp3)
                 tango[i]['speed_4'] = temp3.split()
 
+
     def number(fir, sec): #정수 사이 간격 길이 구하는 함수
         for i in range(fir, sec):
             return i
@@ -411,37 +412,37 @@ def Analyze(clas):
     #메뉴 등 실행 코드
 
     read_data(clas)
-    # print("""
-    # ======{clas}반의 결과======
-    # 앞문 > 최고 - {df1}
-    #     > 차선책 - {df1_2}
-    # 티비 앞 > 최고 - {df2}
-    #         > 차선책 - {df2_2}
-    # 사물함 앞 > 최고 - {df3}
-    #         > 차선책 - {df3_2}
-    # 뒷문 > 최고 - {df4}
-    #     > 차선책 - {df4_2}
-    # ===========================
-    # """.format(clas = clas, df1 = df1_top, df1_2 = df1_2top, df2 = df2_top, df2_2 = df2_2top, df3 = df3_top, df3_2 = df3_2top, df4 = df4_top, df4_2 = df4_2top)) #결과 출력
+    print("""
+    ======{clas}반의 결과======
+    앞문 > 최고 - {df1}
+        > 차선책 - {df1_2}
+    티비 앞 > 최고 - {df2}
+            > 차선책 - {df2_2}
+    사물함 앞 > 최고 - {df3}
+            > 차선책 - {df3_2}
+    뒷문 > 최고 - {df4}
+        > 차선책 - {df4_2}
+    ===========================
+    """.format(clas = clas, df1 = df1_top, df1_2 = df1_2top, df2 = df2_top, df2_2 = df2_2top, df3 = df3_top, df3_2 = df3_2top, df4 = df4_top, df4_2 = df4_2top)) #결과 출력
 
     temp = [k for k, v in DEUS.items() if v == max(DEUS.values())]
     if len(wifi_) != 0:
         if temp[0].split('(')[0] in [j.split('(')[0] for j in wifi_]:
             if DEUS[temp[0]] > [v for k, v in wifi_.items()   if temp[0].split('(')[0] in k][0]:
                 wifi_[temp[0]] = DEUS[temp[0]]
-                return temp[0], '를', LUX[0], '로'
+                return clas, '반 : ', temp[0], '를', LUX[0], '로'
             elif DEUS[temp[0]] == [v for k, v in wifi_.items()   if temp[0].split('(')[0] in k][0]:
                 ko = [k for k, v in ANGEL.items()  if v == max(ANGEL.values())]
                 # print(ko)
                 wifi_[ko[0]] = ANGEL[ko[0]]
-                return temp[0], '를', LUX[0], '로'
+                return clas, '반 : ', temp[0], '를', LUX[0], '로'
         else:
             wifi_[temp[0]] = DEUS[temp[0]]
         # print(temp)
-        return temp[0], '를', LUX[0], '로'
+        return clas, '반 : ', temp[0], '를', LUX[0], '로'
     else:
         wifi_[temp[0]] = DEUS[temp[0]]
-        return temp[0], '를', LUX[0], '로'
+        return clas, '반 : ', temp[0], '를', LUX[0], '로'
 
 
     # if len(wifi_) != 0:
