@@ -2,20 +2,34 @@ from ast import Num
 from itertools import count
 from re import X
 import string
-from time import sleep
-import pandas as pd
-import matplotlib
-import numpy as np
-import os
-from collections import Counter
-import platform
-
 '''
 NAME : WIFI Analyze
-PROJECT : Vene, Vidi, Vici
+PROJECT : Veni, Vidi, Vici
 Author : ADEL
 
-made from 2022-08-03
+<License>
+MIT License
+
+Copyright (c) 2022/08/03 ADEL <bepuetv123@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</License>
 
 =====info=====
 
@@ -25,6 +39,15 @@ made from 2022-08-03
 4 : 뒷 문
 
 '''
+
+from time import sleep
+import pandas as pd
+import matplotlib
+import numpy as np
+import os
+from collections import Counter
+import platform
+
 
 #전역함수#
 global channel_
@@ -125,10 +148,9 @@ def Analyze(clas):
                 temp3 = tango[i]['speed_1']
                 temp3 = str(temp3)
                 tango[i]['speed_1'] = temp3.split()
-
-                
-
                 #c.f) 여기서 6시간 걸림 많은 오류와 많은 이상한 것으로 고생함
+
+
             elif tango == df2:
 
                 temp1 = tango[i]['wifi_name_2']
@@ -200,7 +222,9 @@ def Analyze(clas):
                     if res[i+1] == res[0]:
                         pass
                     elif res[i+1] < res[0]: #맨 처음값을 지웠는데 맨 처음 값과 같은 값이 있으면 건너 뛰고 다음 값을 찾는다.(최종적으로 처음 값보다 바로 다음으로 작은 값 구함)
-                        temp = [k for k, v in obj.items()  if v == res[i+1] and not max(wifi_k, key=wifi_k.get).split('(')[0] in k] #해당 값(두번째로 큰 값)을 가진 와이파이 이름을 리스트 형태로 반환. <이때 최상 값과 같으면 무시>
+                        temp = [k for k, v in obj.items()  if v == res[i+1] and not max(wifi_k, key=wifi_k.get).split('(')[0] in k]
+                        #해당 값(두번째로 큰 값)을 가진 와이파이 이름을 리스트 형태로 반환. <이때 최상 값과 같으면 무시>
+                        
                         final ='' #최종값
                         for j in range(len(temp)):
                             final += 'SEC_NAME : ' + temp[j] + '    SEC_SPEED : ' + obj[temp[j]] + '\n'
@@ -214,7 +238,8 @@ def Analyze(clas):
                     if res[i+1] == res[0]:
                         pass
                     elif res[i+1] < res[0]: #맨 처음값을 지웠는데 맨 처음 값과 같은 값이 있으면 건너 뛰고 다음 값을 찾는다.(최종적으로 처음 값보다 바로 다음으로 작은 값 구함)
-                        temp = [k for k, v in obj.items()  if v == res[i+1] and not max(wifi_k, key=wifi_k.get).split('(')[0] in k] #해당 값(두번째로 큰 값)을 가진 와이파이 이름을 리스트 형태로 반환. <이때 최상 값과 같으면 무시>
+                        temp = [k for k, v in obj.items()  if v == res[i+1] and not max(wifi_k, key=wifi_k.get).split('(')[0] in k]
+                        #해당 값(두번째로 큰 값)을 가진 와이파이 이름을 리스트 형태로 반환. <이때 최상 값과 같으면 무시>
                         if len(temp) != 0: #해당값 리스트 개수가 0이 아니면
                             if temp[0].split('(')[0] in [k.split('(')[0] for k in ANGEL.keys()]: #같은 키가 존재 하면
                                 if temp[0] > [k for k in ANGEL if temp[0].split('(')[0] in k][0]: #값을 비교하고 값이 클때만

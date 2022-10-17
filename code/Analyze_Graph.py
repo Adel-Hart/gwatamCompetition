@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import os
 import platform
-from sklearn.linear_model import LinearRegression #선형 회귀 살장
+from sklearn.linear_model import LinearRegression #머신러닝 - 선형회귀기법 설정
 
 ###########################구역 내 전역 함수 part#############################
 global dir #dir 전역 함수
@@ -196,7 +196,7 @@ def Graph():
     print(x)
     print(y)
 
-    leaner.fit(x.reshape(-1, 1), y)
+    leaner.fit(x.reshape(-1, 1), y) #머신러닝 모델 생성
 
     
     plt.plot(x, y, 'o')
@@ -204,7 +204,7 @@ def Graph():
     plt.xlabel('와이파이의 거리', loc='right')
     plt.ylabel('와이파이와의 속도', loc='top')
     plt.legend()
-    plt.savefig('test.png')
+    plt.savefig('result.png')
 
 
 
